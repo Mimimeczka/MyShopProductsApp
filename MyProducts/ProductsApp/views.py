@@ -2,11 +2,13 @@ from .serializers import ProductSerializer
 from rest_framework import viewsets
 from .models import Product
 from rest_framework.response import Response
+from rest_framework.authentication import TokenAuthentication
 
 
 class ProductViewSet(viewsets.ModelViewSet):
     # queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    authentication_classes = (TokenAuthentication, )
 
     def get_queryset(self):
         product = Product.objects.all()
