@@ -28,7 +28,8 @@ class ProductViewSet(viewsets.ModelViewSet):
         product = Product.objects.create(
             name=request.data['name'],
             description=request.data['description'],
-            price=request.data['price']
+            price=request.data['price'],
+            quantity=request.data['quantity']
         )
         serializer = ProductSerializer(product, many=False)
         return Response(serializer.data)
@@ -41,6 +42,8 @@ class ProductViewSet(viewsets.ModelViewSet):
             product.description = request.data['description']
         if request.data['price'] is not '':
             product.price = request.data['price']
+        if request.data['quantity'] is not '':
+            product.price = request.data['quantity']
         product.save()
         serializer = ProductSerializer(product, many=False)
         return Response(serializer.data)
