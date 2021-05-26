@@ -43,7 +43,7 @@ class ProductViewSet(viewsets.ModelViewSet):
         if request.data['price'] is not '':
             product.price = request.data['price']
         if request.data['quantity'] is not '':
-            product.price = request.data['quantity']
+            product.quantity = request.data['quantity']
         product.save()
         serializer = ProductSerializer(product, many=False)
         return Response(serializer.data)
